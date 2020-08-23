@@ -2,10 +2,10 @@
 
 namespace Common.Messages.Events
 {
-    public interface ITopicBus
+    public interface ITopicBus<T,TEvent> where TEvent : IEvent
     {
-        Task PublishEvent<TEvent>(TEvent @event) where TEvent : IEvent;
-        Task SubscribeToEvent<TEvent, THEvent>() where TEvent : IEvent where THEvent : IEventHandler;
+        Task PublishEvent(TEvent @event);
+        Task SubscribeToEvent<THEvent>(string subscriptionName) where THEvent : IEventHandler;
 
 
     }

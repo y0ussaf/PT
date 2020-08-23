@@ -2,9 +2,9 @@
 
 namespace Common.Messages.Commands
 {
-    public interface IQueueBus
+    public interface IQueueBus<T,TCommand> where  TCommand : ICommand
     {
-        Task SendCommand<TCommand>(TCommand command) where TCommand : ICommand;
-        Task SubscribeToCommand<TCommand, THCommand>() where TCommand : ICommand where THCommand : ICommandHandler;
+        Task SendCommand(TCommand command);
+        Task SubscribeToCommand<THCommand>() where THCommand : ICommandHandler;
     }
 }
