@@ -8,12 +8,12 @@ using Newtonsoft.Json;
 
 namespace Common.Azure.ServiceBus
 {
-    public class AzureQueueBus<T,TCommand> : IQueueBus<T,TCommand> where TCommand : ICommand
-    {
-        private readonly IAzureQueueBusOptions<T> _options;
+    public class AzureQueueBus<TCommand> : IQueueBus<TCommand> where TCommand : ICommand
+     {
+        private readonly IAzureQueueBusOptions<TCommand> _options;
         private readonly IServiceProvider _serviceProvider;
         private readonly IQueueClient _queueClient;
-        public AzureQueueBus(IAzureQueueBusOptions<T> options,IServiceProvider serviceProvider)
+        public AzureQueueBus(IAzureQueueBusOptions<TCommand> options,IServiceProvider serviceProvider)
         {
             _options = options;
             _serviceProvider = serviceProvider;

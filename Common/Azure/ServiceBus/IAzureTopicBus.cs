@@ -1,6 +1,8 @@
-﻿namespace Common.Azure.ServiceBus
+﻿using Common.Messages.Events;
+
+namespace Common.Azure.ServiceBus
 {
-    public interface IAzureTopicBus<T> : IAzureBusOptions
+    public interface IAzureTopicBusOptions<TEvent> : IAzureBusOptions where TEvent : IEvent
     {
         public string TopicName { get; set; }
     }

@@ -10,13 +10,13 @@ using Newtonsoft.Json;
 
 namespace Common.Azure.ServiceBus
 {
-    public class AzureTopicBus<T,TEvent> : ITopicBus<T,TEvent> where TEvent : IEvent
-    {
+    public class AzureTopicBus<TEvent> : ITopicBus<TEvent> where TEvent : IEvent 
+     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly IAzureTopicBus<T> _options;
+        private readonly IAzureTopicBusOptions<TEvent> _options;
         private readonly ITopicClient _topicClient;
         private readonly Dictionary<string, ISubscriptionClient> _subscriptionClients;
-        public AzureTopicBus(IAzureTopicBus<T> options,IServiceProvider serviceProvider)
+        public AzureTopicBus(IAzureTopicBusOptions<TEvent> options,IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
             _options = options;
