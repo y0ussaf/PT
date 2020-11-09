@@ -2,11 +2,13 @@
 
 namespace Subscription.Domain
 {
-    public class Subscription
+    public class AmazonProductSubscription
     {
-        public double Threshold { get; private set; }
-        public Guid UserId { get; private set; }
-        public Subscription(Guid id,double threshold,Mode mode,Guid userId )
+        public double Threshold { get; }
+        public string ProductId { get; }
+        public string Location { get; }
+        public Guid UserId { get; }
+        public AmazonProductSubscription(Guid id,double threshold,Mode mode,Guid userId, string productId, string location)
         {
             if (threshold < 0)
             {
@@ -14,7 +16,8 @@ namespace Subscription.Domain
             }
             Threshold = threshold;
             UserId = userId;
-            
+            ProductId = productId;
+            Location = location;
         }
     }
 

@@ -10,5 +10,6 @@ namespace Subscription.Messages.Events
         public double OldPrice { get; set; }
         public string ProductName { get; set; }
         public string ProductUrl { get; set; }
+        public string Location { get; set; }
     }
 }
